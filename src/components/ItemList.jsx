@@ -6,7 +6,7 @@ import DataContext from "../context/DataContext";
 
 const ItemList = () => {
   const { items, setItems, search } = useContext(DataContext);
-  const filteredItems = items.filter((item) => item?.item?.toLowerCase().includes(search.toLowerCase()))
+  const filteredItems = items.filter((item) => item.item?.toLowerCase().includes(search.toLowerCase()))
   return (
     <ul>
       {filteredItems.map((item) => (
@@ -14,10 +14,10 @@ const ItemList = () => {
           <input
             type="checkbox"
             onChange={() => handleCheck(item.id, filteredItems, setItems)}
-            checked={filteredItems.checked}
+            checked={item.checked}
           />
           <label
-            style={filteredItems.checked ? { textDecoration: "line-through" } : null}
+            style={item.checked ? { textDecoration: "line-through" }: null}
             onDoubleClick={() => handleCheck(item.id, filteredItems, setItems)}
           >
             {item.item}
